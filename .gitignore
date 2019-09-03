@@ -1,0 +1,14 @@
+
+chromedriver
+.properties
+.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IntelliJ
+.idea
+.iml
+target
