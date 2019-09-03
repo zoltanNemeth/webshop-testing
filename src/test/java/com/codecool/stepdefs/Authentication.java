@@ -1,19 +1,14 @@
-package cucumber;
+package com.codecool.stepdefs;
 
 import com.codecool.driver.WebDriverSingleton;
-import com.codecool.pageobject.Login;
+import com.codecool.pages.Login;
 import cucumber.api.java.en.And;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
-
-
 public class Authentication {
     private Login login = new Login();
-
-
 
 
     @When("the user chooses the Login menu")

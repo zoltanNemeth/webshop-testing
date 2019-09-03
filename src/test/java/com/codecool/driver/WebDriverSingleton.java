@@ -14,7 +14,7 @@ public class WebDriverSingleton {
 
     private static WebDriver driver;
     private static final Path PATH_TO_CONFIG = Paths.get(
-            System.getProperty("user.dir"), "/src/main/resources/properties.properties");
+            System.getProperty("user.dir"), "/src/test/resources/properties.properties");
 
     private WebDriverSingleton() {
     }

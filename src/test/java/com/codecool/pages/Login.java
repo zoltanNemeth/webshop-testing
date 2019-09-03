@@ -1,8 +1,8 @@
-package com.codecool.pageobject;
+package com.codecool.pages;
 
 
-import com.codecool.pageobject.basepage.BasePage;
-import com.codecool.wait.Wait;
+import com.codecool.pages.base.BasePage;
+import com.codecool.util.wait.Wait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

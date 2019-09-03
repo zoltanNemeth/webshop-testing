@@ -1,6 +1,6 @@
-package com.codecool.pageobject;
+package com.codecool.pages;
 
-import com.codecool.pageobject.basepage.BasePage;
+import com.codecool.pages.base.BasePage;
 
 public class Index extends BasePage {
     public void goTo() {
