@@ -22,14 +22,35 @@ public class RegistrationSteps {
         registration.navigateTosignUpForm();
     }
 
-    @And("it has a form with all the required fields: name, email, password")
+    @And("it has a form with all the required fields")
     public void itHasAFormWithAllTheRequiredFieldsNameEmailPassword() {
         registration.inputFormisShown();
     }
 
 
-    @And("it has a form with all the required fields: name, email,")
-    public void itHasAFormWithAllTheRequiredFieldsNameEmail() {
+    @Then("Then ensure the system saves it's data as a new User")
+    public void thenEnsureTheSystemSavesItSDataAsANewUser() throws Exception {
+        Assert.assertEquals(expectedUserName, registration.getLoggedUser());
+    }
+
+    @Then("ensure the program shows the same form with the incorrect data, and some description about the errors.\"")
+    public void ensureTheProgramShowsTheSameFormWithTheIncorrectDataAndSomeDescriptionAboutTheErrors() throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
+        registration.errormessageisShown();
+    }
+
+
+    @When("the User submits the form with invalid information")
+    public void theUserSubmitsTheFormWithInvalidInformation() throws Exception {
+        String user = faker.firstName();
+        String email = faker.firstName();
+        String password = faker.firstName().toUpperCase();
+        registration.fillInputFieldWithData(user, email, password);
+        registration.completeRegistration();
+    }
+
+
+    @When("the user submits the form with valid  information")
+    public void theUserSubmitsTheFormWithValidInformation() throws Exception {
         String user = faker.name();
         expectedUserName = user;
         String email = faker.firstName() + "@gmail.com";
@@ -38,23 +59,10 @@ public class RegistrationSteps {
         registration.fillInputFieldWithData(user, email, password);
         registration.completeRegistration();
 
-
     }
 
-    @When("Then ensure the system saves it's data as a new User")
-    public void thenEnsureTheSystemSavesItSDataAsANewUser() throws Exception {
-        String user = registration.getLoggedUser();
-        Assert.assertEquals(expectedUserName, user);
+    @And("And it has a form with all the required fields")
+    public void andItHasAFormWithAllTheRequiredFields() {
+
     }
-
-    @Then("ensure the program shows the same form with the incorrect data, and some description about the errors.\"")
-    public void ensureTheProgramShowsTheSameFormWithTheIncorrectDataAndSomeDescriptionAboutTheErrors() throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
-    }
-
-
-    @When("the User submits the form with invalid information")
-    public void theUserSubmitsTheFormWithInvalidInformation() {
-    }
-
-
 }

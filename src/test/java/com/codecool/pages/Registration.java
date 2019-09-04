@@ -22,6 +22,8 @@ public class Registration extends BasePage {
     WebElement registerButton;
     @FindBy(xpath = "//span[@id='navbar-text']/b")
     WebElement userNameBar;
+    @FindBy(xpath = "/html//p[@id='username-error']")
+    WebElement userNameErrorLabel;
 
     public void navigateTosignUpForm() {
         signUpLink.click();
@@ -34,7 +36,8 @@ public class Registration extends BasePage {
     }
 
 
-    public void fillInputFieldWithData(String user, String email, String password) {
+    public void fillInputFieldWithData(String user, String email, String password) throws Exception {
+        Wait.waitForVisibility(userNameField);
         userNameField.sendKeys(user);
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
@@ -45,9 +48,14 @@ public class Registration extends BasePage {
         registerButton.click();
     }
 
-    public String getLoggedUser() {
+    public String getLoggedUser() throws Exception {
+        Wait.waitForVisibility(userNameBar);
         return userNameBar.getText();
     }
 
+    public boolean errormessageisShown() {
+
+        return userNameErrorLabel.isDisplayed();
+    }
 
 }
