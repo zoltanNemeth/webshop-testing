@@ -1,7 +1,7 @@
 
 chromedriver
-.properties
-.class
+*.properties
+*.class
 
 # Package Files #
 *.jar
@@ -10,5 +10,5 @@ chromedriver
 
 # IntelliJ
 .idea
-.iml
+*.iml
 target
