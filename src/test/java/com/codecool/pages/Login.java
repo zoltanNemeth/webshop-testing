@@ -1,6 +1,7 @@
 package com.codecool.pages;
 
 
+import com.codecool.driver.WebDriverSingleton;
 import com.codecool.pages.base.BasePage;
 import com.codecool.util.wait.Wait;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,9 @@ public class Login extends BasePage {
     @FindBy(xpath = "//input[@name='password']")
     WebElement passwordField;
 
-    public Login() {
+
+    public void goTo() {
+        driver.get("http://localhost:8888/");
     }
 
     public void getLoginForm() {
@@ -45,4 +48,7 @@ public class Login extends BasePage {
         loginButton.click();
     }
 
+    public void userNotLoggedIn() {
+        Wait.waitForVisibility(loginLink);
+    }
 }
