@@ -10,7 +10,6 @@ Feature: Shopping cart
     When I click on the 'Add to cart' button
     Then ensure it creates a new Order for storing cart data of the User
     And ensure it creates a new LineItem with the quantity and price of the Product
-    And ensure it stores this data in the session
     And ensure it displays the number of cart items in the Page header.
 
   Scenario: "As a User,
