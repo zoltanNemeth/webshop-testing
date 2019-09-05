@@ -1,15 +1,10 @@
 Feature: list of products
 
-  Scenario Outline: user sees all the products
+  Scenario: user sees all the products
     Given I have Products and a Product Category in the application
-    When I open the root url "<url>"
+    When I open the root url
     Then ensure I can see a list of Products
-    And ensure that the following details are displayed: "<productTitle>", "<description>", "<image>", "<price>"
-
-    Examples:
-      | productTitle | description | image | price | url |
-      | asac | caxcc | caxcxa | fa | / |
-
+    And ensure that the following details are displayed: productTitle, description, image, price
 
   Scenario: user filtering products by product categories
     Given I have Products and Product Categories listed on the index page
