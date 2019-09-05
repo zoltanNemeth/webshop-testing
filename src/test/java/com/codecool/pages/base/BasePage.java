@@ -13,7 +13,5 @@ public abstract class BasePage {
     public BasePage() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeOutInSeconds), this);
-        driver.get("http://localhost:8888/");
-
     }
 }

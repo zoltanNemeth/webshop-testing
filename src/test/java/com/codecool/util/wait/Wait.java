@@ -1,6 +1,7 @@
 package com.codecool.util.wait;
 
 import com.codecool.driver.WebDriverSingleton;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,5 +18,9 @@ public class Wait {
 
     public static void waitForVisibility(WebElement element) throws Error {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static WebElement verifyElement(WebElement element) {
+        return webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
     }
 }
