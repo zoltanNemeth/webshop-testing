@@ -2,13 +2,15 @@ package com.codecool.stepdefs;
 
 import com.codecool.driver.WebDriverSingleton;
 import com.codecool.pages.Login;
+import com.codecool.pages.Logout;
 import cucumber.api.java.en.And;
-
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 
 public class Authentication {
     private Login login = new Login();
+    private Logout logout = new Logout();
 
 
     @When("the user chooses the Login menu")
@@ -24,35 +26,6 @@ public class Authentication {
 
     }
 
-    @And("ensure to provide a Logout option.")
-    public void ensureToProvideALogoutOption() {
-    }
-
-
-    @When("the user submits the form with invalid information")
-    public void theUserSubmitsTheFormWithInvalidInformation() {
-
-    }
-
-    @Then("provide an error message.")
-    public void provideAnErrorMessage() {
-
-    }
-
-    @When("the user chooses the {string}Logout{string} option")
-    public void theUserChoosesTheLogoutOption(String arg0, String arg1) {
-
-    }
-
-    @Then("reset the session and redirect back to the login form")
-    public void resetTheSessionAndRedirectBackToTheLoginForm() {
-
-    }
-
-    @Then("I should log out")
-    public void iShouldLogOut() {
-    }
-
     @Then("I close browser")
     public void iCloseBrowser() {
         WebDriverSingleton.closeWebBrowser();
@@ -60,11 +33,35 @@ public class Authentication {
 
 
     @Then("ensure to provide a login form with the following fields {string} and {string}")
-    public void ensureToProvideALoginFormWithTheFollowingFieldsAnd(String arg0, String arg1) {
-        login.addUserName(arg0);
-        login.addPassword(arg1);
+    public void ensureToProvideALoginFormWithTheFollowingFieldsAnd(String userName, String password) throws Exception {
+        login.fillUserNameField(userName);
+        login.fillPasswordField(password);
+
     }
 
+
+    @And("ensure to provide a Logout option and the username is shown {string}.")
+    public void ensureToProvideALogoutOptionAndTheUsernameIsShown(String username) {
+        String loggedUser = login.theUserIsLogged();
+        Assert.assertEquals(username, loggedUser);
+    }
+
+    @When("the user submits the form with invalid {string} and {string} information")
+    public void theUserSubmitsTheFormWithInvalidAndInformation(String user, String password) throws Exception {
+        login.doLoginInvalidInfo(user, password);
+    }
+
+
+    @Then("provide an error message.")
+    public void provideAnErrorMessage() {
+        login.ErrorMessageWhileInvalidInfoisDisplayed();
+
+    }
+
+    @Then("I should logout")
+    public void iShouldLogout() throws Exception {
+        logout.doLogout();
+    }
 
 
 }
