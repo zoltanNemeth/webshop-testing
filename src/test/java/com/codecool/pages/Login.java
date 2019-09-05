@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.NoSuchElementException;
+
 public class Login extends BasePage {
     private Wait wait = new Wait();
 
@@ -69,7 +71,15 @@ public class Login extends BasePage {
     }
 
     public void ErrorMessageWhileInvalidInfoisDisplayed() {
-        errorMessage.isDisplayed();
+
+        try {
+            errorMessage.isDisplayed();
+
+        } catch (
+                NoSuchElementException e) {
+            throw new RuntimeException("Input form is not displayed!");
+        }
+
     }
 
     public void userNotLoggedIn() throws Exception {

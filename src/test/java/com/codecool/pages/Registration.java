@@ -5,6 +5,8 @@ import com.codecool.util.wait.Wait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.NoSuchElementException;
+
 public class Registration extends BasePage {
     @FindBy(xpath = "//li[@id='register']//i")
     WebElement signUpLink;
@@ -31,7 +33,12 @@ public class Registration extends BasePage {
 
 
     public void inputFormisShown() {
-        inputForm.isDisplayed();
+        try {
+            inputForm.isDisplayed();
+
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("Input form is not displayed!");
+        }
 
     }
 
