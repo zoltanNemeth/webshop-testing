@@ -1,6 +1,7 @@
 package com.codecool.pages;
 
 
+import com.codecool.driver.WebDriverSingleton;
 import com.codecool.pages.base.BasePage;
 import com.codecool.util.wait.Wait;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Login extends BasePage {
+    private Wait wait = new Wait();
 
     @FindBy(xpath = "//li[@id='login']/a[@href='#']")
     WebElement loginLink;
@@ -23,7 +25,9 @@ public class Login extends BasePage {
     WebElement errorMessage;
     private Wait wait = new Wait();
 
-    public Login() {
+
+    public void goTo() {
+        driver.get("http://localhost:8888/");
     }
 
 
@@ -36,6 +40,7 @@ public class Login extends BasePage {
         userNameField.isDisplayed();
         userNameField.clear();
         userNameField.sendKeys(userName);
+
     }
 
 
@@ -43,6 +48,7 @@ public class Login extends BasePage {
         passwordField.isDisplayed();
         passwordField.clear();
         passwordField.sendKeys(password);
+
     }
 
     public void doLogin() {
@@ -67,4 +73,7 @@ public class Login extends BasePage {
         errorMessage.isDisplayed();
     }
 
+    public void userNotLoggedIn() {
+        Wait.waitForVisibility(loginLink);
+    }
 }

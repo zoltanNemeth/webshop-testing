@@ -120,12 +120,11 @@
             <artifactId>javafaker</artifactId>
             <version>0.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.javadev/password-generator -->
         <dependency>
-            <groupId>com.github.javadev</groupId>
-            <artifactId>password-generator</artifactId>
-            <version>1.0</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.5.1</version>
+            <scope>compile</scope>
         </dependency>
-
     </dependencies>
 </project>
