@@ -1,9 +1,11 @@
 package com.codecool.stepdefs;
 
 import com.codecool.driver.WebDriverSingleton;
+import com.codecool.pages.Index;
 import com.codecool.pages.Login;
 import com.codecool.pages.Logout;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -11,6 +13,7 @@ import org.junit.Assert;
 public class Authentication {
     private Login login = new Login();
     private Logout logout = new Logout();
+    private Index index = new Index();
 
 
     @When("the user chooses the Login menu")
@@ -64,4 +67,8 @@ public class Authentication {
     }
 
 
+    @Given("user on the site")
+    public void userOnTheSite() {
+        index.goTo();
+    }
 }

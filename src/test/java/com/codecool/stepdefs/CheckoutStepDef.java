@@ -36,7 +36,7 @@ public class CheckoutStepDef {
     }
 
     @Then("I fill the {string} and {string} and {string} and {string} and {string} and {string} and {string}")
-    public void fillTheForm(String name, String email, String phoneNr, String country, String city, String zip, String billingAddress) {
+    public void fillTheForm(String name, String email, String phoneNr, String country, String city, String zip, String billingAddress) throws Exception {
         Wait.waitForVisibility(checkoutForm.getNameField());
         checkoutForm.fillName(name);
         checkoutForm.fillEmail(email);
@@ -89,11 +89,13 @@ public class CheckoutStepDef {
         try {
             login.userNotLoggedIn();
             login.getLoginForm();
-            login.addUserName("pepperoni");
-            login.addPassword("@Petrapak13");
+            login.fillUserNameField("pepperoni");
+            login.fillPasswordField("@Petrapak13");
             login.doLogin();
         } catch (TimeoutException exception) {
             System.out.println("User logged in, pass it.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

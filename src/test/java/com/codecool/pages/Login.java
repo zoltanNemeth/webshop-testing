@@ -23,7 +23,6 @@ public class Login extends BasePage {
     WebElement logOutBar;
     @FindBy(xpath = "//p[@id='modalErrorMessage']//b[.=' Login failed. Wrong username or password! ']")
     WebElement errorMessage;
-    private Wait wait = new Wait();
 
 
     public void goTo() {
@@ -73,7 +72,7 @@ public class Login extends BasePage {
         errorMessage.isDisplayed();
     }
 
-    public void userNotLoggedIn() {
+    public void userNotLoggedIn() throws Exception {
         Wait.waitForVisibility(loginLink);
     }
 }

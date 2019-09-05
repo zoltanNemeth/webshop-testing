@@ -1,7 +1,7 @@
 Feature: Login / Logout
 
   Scenario Outline: Login user
-
+    Given user on the site
     When the user chooses the Login menu
     Then ensure to provide a login form with the following fields "<user>" and "<password>"
     When the user submits the form with valid information
@@ -16,6 +16,7 @@ Feature: Login / Logout
     Then I close browser
 
   Scenario Outline:Login with invalid information
+    Given user on the site
     When the user chooses the Login menu
     When the user submits the form with invalid "<invalid>" and "<invalidPassword>" information
     Then provide an error message.

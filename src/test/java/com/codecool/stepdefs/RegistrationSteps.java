@@ -17,7 +17,7 @@ public class RegistrationSteps {
     private Login login = new Login();
 
 
-    @Given("that there is a Sign up option on the website")
+    @And("that there is a Sign up option on the website")
     public void thatThereIsASignUpOptionOnTheWebsite() {
         registration.navigateTosignUpForm();
     }
