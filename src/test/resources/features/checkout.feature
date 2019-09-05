@@ -17,10 +17,11 @@ Feature: Checkout
 
       | Name       | Email               | Phone number | Country | City     | Zip  | Billing Adress             |
       | Pelda Jani | example@example.com | +123456789   | Hungary | Budapest | 1111 | Budapest Example street 1. |
-      |  | exampleexample.com | abcd   | Hungary | Budapest | 1111 | Budapest Example street 1. |
-      | Pelda Jani | @example.com | +1234őáű789   | Hungary | Budapest | 1111 | Budapest Example street 1. |
-      | Pelda Jani | example@.com |    | Hungary | Budapest | 1111 | Budapest Example street 1. |
-      | Pelda Jani |   | +123456789   | Hungary | Budapest | 1111 | Budapest Example street 1. |
+      |            | exampleexample.com  | abcd         | Hungary | Budapest | 1111 | Budapest Example street 1. |
+      | Pelda Jani | @example.com        | +1234őáű789  | Hungary | Budapest | 1111 | Budapest Example street 1. |
+      | Pelda Jani | example@.com        |              | Hungary | Budapest | 1111 | Budapest Example street 1. |
+      | Pelda Jani |                     | +123456789   | Hungary | Budapest | 1111 | Budapest Example street 1. |
+      |            | 12124124            | +123456789   | Hungary | Budapest | 1111 | Budapest Example street 1. |
 
 
 

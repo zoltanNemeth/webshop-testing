@@ -1,5 +1,6 @@
 package com.codecool.stepdefs;
 
+import com.codecool.driver.WebDriverSingleton;
 import com.codecool.pages.Index;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -51,5 +52,6 @@ public class MainPage {
 
     @Then("ensure it displays the Products only for the selected Supplier")
     public void ensureItDisplaysTheProductsOnlyForTheSelectedSupplier() {
+        WebDriverSingleton.closeWebBrowser();
     }
 }

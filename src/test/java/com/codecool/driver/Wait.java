@@ -1,4 +1,4 @@
-package com.codecool.util.wait;
+package com.codecool.driver;
 
 import com.codecool.driver.WebDriverSingleton;
 import org.openqa.selenium.By;

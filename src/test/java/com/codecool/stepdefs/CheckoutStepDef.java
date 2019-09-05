@@ -5,7 +5,7 @@ import com.codecool.pages.CheckoutForm;
 import com.codecool.pages.Login;
 import com.codecool.pages.Payment;
 import com.codecool.pages.ShoppingCart;
-import com.codecool.util.wait.Wait;
+import com.codecool.driver.Wait;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

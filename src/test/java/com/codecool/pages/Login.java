@@ -1,9 +1,8 @@
 package com.codecool.pages;
 
 
-import com.codecool.driver.WebDriverSingleton;
 import com.codecool.pages.base.BasePage;
-import com.codecool.util.wait.Wait;
+import com.codecool.driver.Wait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
