@@ -1,4 +1,4 @@
-Feature: list of products
+Feature: Index page
 
   Scenario: user sees all the products
     Given I have Products and a Product Category in the application

@@ -13,7 +13,7 @@ public class Index extends BasePage {
     private final String url = "http://localhost:8888/";
 
     @FindAll({
-        @FindBy(xpath = "//div[@id='products']//div[@class='card']")
+            @FindBy(xpath = "//div[@id='products']//div[@class='card']")
     })
     private List<WebElement> productCards;
 
@@ -22,28 +22,29 @@ public class Index extends BasePage {
     })
     private List<WebElement> productDescriptions;
 
-//    @FindBy(xpath = "/html/body/div[4]/div[2]/div[1]/div/img")
-//    private WebElement firstProductImage;
-//
-//    @FindBy(xpath = "//div[@id='products']//div[@class='card'][0]//h4/text()")
-//    private WebElement firstProductTitle;
-//
-//    @FindBy(xpath = "//div[@id='products']//div[@class='card'][0]//p[@class='card-text']/text()")
-//    private WebElement firstProductDescription;
-//
-//    @FindBy(xpath = "//div[@id='products']//div[@class='card'][0]//p[@class='lead']/text()")
-//    private WebElement firstProductPrice;
-
     @FindAll({
             @FindBy(xpath = "//select[@name='categories']//option")
     })
     private List<WebElement> categories;
 
+    @FindAll({
+            @FindBy(xpath = "//select[@name='suppliers']//option")
+    })
+    private List<WebElement> suppliers;
+
     @FindBy(xpath = "//select[@name='categories']")
     private WebElement categorySelect;
 
+    @FindBy(xpath = "//select[@name='suppliers']")
+    private WebElement supplierSelect;
+
     @FindBy(xpath = "//button[contains(text(), 'Search')]")
     private WebElement searchButton;
+
+    @FindAll({
+            @FindBy(xpath = "//div[@id='products']//h4[@class='card-title']")
+    })
+    private List<WebElement> productTitles;
 
     public void goTo() {
         driver.navigate().to(this.url);
@@ -61,19 +62,38 @@ public class Index extends BasePage {
         return true;
     }
 
-    public boolean areThereProductCategories() {
-        return categories.size() > 1;
+    public boolean areThereProductsAndProductCategories() {
+        return (categories.size() > 1) && (productCards.size() > 1);
     }
 
-    public void searchForCategory(String category) {
+    public void clickOnCategory(String category) {
         Select select = new Select(categorySelect);
         select.selectByVisibleText(category);
         searchButton.click();
     }
 
-    public boolean areThereOnlyLaptops() {
+    public boolean areThereOnlyProductsFromSpecificCategory(String category) {
         for (WebElement description: productDescriptions) {
-            if (!description.getText().contains("laptop")) {
+            if (!description.getText().contains(category)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean areThereProductsAndSuppliers() {
+        return (suppliers.size() > 1) && (productCards.size() > 1);
+    }
+
+    public void clickOnSupplier(String supplier) {
+        Select select = new Select(supplierSelect);
+        select.selectByVisibleText(supplier);
+        searchButton.click();
+    }
+
+    public boolean areThereOnlySpecificProductsWithTitles(List expectedSuppliers) {
+        for (WebElement productTitle: productTitles) {
+            if (!expectedSuppliers.toString().contains(productTitle.getText())) {
                 return false;
             }
         }
